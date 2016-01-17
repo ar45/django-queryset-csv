@@ -70,7 +70,7 @@ def write_csv(queryset, file_obj, **kwargs):
             csv_kwargs[key] = val
 
     # add BOM to support CSVs in MS Excel (for Windows only)
-    file_obj.write(_safe_utf8_stringify(u'\ufeff'))
+    file_obj.write(_safe_utf8_stringify(six.text_type('\ufeff')))
 
     # the CSV must always be built from a values queryset
     # in order to introspect the necessary fields.
